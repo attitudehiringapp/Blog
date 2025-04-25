@@ -12,22 +12,23 @@
       color: #fff;
     }
 
-    header, footer {
+    header {
       background-color: #222;
-      text-align: center;
       padding: 20px;
+      text-align: center;
     }
 
     header h1 {
-      color: #f50;
       margin: 0;
+      font-size: 2.5em;
+      color: #f50;
     }
 
     nav {
       background-color: #333;
       display: flex;
       justify-content: center;
-      padding: 10px;
+      padding: 10px 0;
     }
 
     nav a {
@@ -47,9 +48,9 @@
 
     .section-title {
       font-size: 1.8em;
+      margin-bottom: 10px;
       border-bottom: 2px solid #f50;
       display: inline-block;
-      margin-bottom: 10px;
     }
 
     .gallery, .videos {
@@ -64,55 +65,23 @@
       border-radius: 8px;
     }
 
-    .upload-form, .comment-form {
-      margin-top: 20px;
-      background-color: #222;
-      padding: 15px;
-      border-radius: 8px;
-    }
-
-    .upload-form input, .comment-form textarea, .comment-form input {
-      width: 100%;
-      margin-top: 10px;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-    }
-
-    .upload-form button, .comment-form button {
-      margin-top: 10px;
-      background-color: #f50;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 5px;
-      cursor: pointer;
+    .blog-posts {
+      margin-top: 30px;
     }
 
     .post {
       background-color: #222;
       padding: 15px;
-      margin-top: 20px;
+      margin-bottom: 15px;
       border-left: 5px solid #f50;
-      border-radius: 8px;
-    }
-
-    .comments {
-      margin-top: 10px;
-      background-color: #111;
-      padding: 10px;
-      border-radius: 5px;
-    }
-
-    .comments p {
-      margin: 5px 0;
-      border-bottom: 1px solid #333;
-      padding-bottom: 5px;
     }
 
     footer {
-      color: #aaa;
-      font-size: 0.9em;
+      background-color: #222;
+      color: #999;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -132,27 +101,15 @@
   </nav>
 
   <div class="container">
-
-    <!-- GALERÍA -->
     <section>
       <h2 class="section-title">Galería de Fotos</h2>
       <div class="gallery">
-        <img src="foto1.jpg" alt="Moto 1">
-        <img src="foto2.jpg" alt="Moto 2">
-        <img src="foto3.jpg" alt="Moto 3">
-      </div>
-
-      <!-- SUBIDA DE FOTOS -->
-      <div class="upload-form">
-        <h3>Sube tu foto</h3>
-        <form action="/subir-foto" method="POST" enctype="multipart/form-data">
-          <input type="file" name="foto" accept="image/*" required />
-          <button type="submit">Subir</button>
-        </form>
+        <img src="foto1.jpg" alt="Moto en ruta" />
+        <img src="foto2.jpg" alt="Grupo motero" />
+        <img src="foto3.jpg" alt="Moto clásica" />
       </div>
     </section>
 
-    <!-- VIDEOS -->
     <section>
       <h2 class="section-title">Videos</h2>
       <div class="videos">
@@ -161,29 +118,16 @@
       </div>
     </section>
 
-    <!-- ENTRADAS -->
-    <section>
+    <section class="blog-posts">
       <h2 class="section-title">Últimas Entradas</h2>
-
       <div class="post">
-        <h3>Ruta por la Sierra de Madrid</h3>
-        <p>Impresionante travesía por curvas y naturaleza. ¡Repetiremos!</p>
-
-        <div class="comment-form">
-          <h4>Deja un comentario</h4>
-          <form action="/comentar" method="POST">
-            <input type="text" name="nombre" placeholder="Tu nombre" required />
-            <textarea name="comentario" rows="3" placeholder="Escribe tu comentario..." required></textarea>
-            <button type="submit">Enviar</button>
-          </form>
-        </div>
-
-        <div class="comments">
-          <p><strong>Ana:</strong> ¡Qué ruta más chula! Gracias por compartir.</p>
-          <p><strong>Juan:</strong> ¿Recomiendas alguna parada para comer?</p>
-        </div>
+        <h3>Ruta por los Pirineos</h3>
+        <p>Una experiencia inolvidable recorriendo curvas y paisajes impresionantes.</p>
       </div>
-
+      <div class="post">
+        <h3>Consejos para viajar seguro</h3>
+        <p>Desde el equipamiento hasta la planificación, todo lo que necesitas saber.</p>
+      </div>
     </section>
   </div>
 
