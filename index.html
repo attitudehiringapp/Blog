@@ -3,39 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galería de Fotos</title>
+  <title>Blog Motero</title>
 </head>
 <body>
-  <h1>Bienvenido a la Galería de Fotos</h1>
-
-  <!-- Enlace al apartado de fotos -->
-  <nav>
-    <a href="/fotos"><button>Ver Fotos</button></a>
-  </nav>
-
-  <h2>Galería de Fotos</h2>
-  <div class="galeria">
-    <!-- Mostrar las imágenes subidas automáticamente -->
-    <div class="imagen">
-      <img src="/uploads/_DSC1166.jpg" alt="Foto 1" style="width: 300px;">
-    </div>
-    <div class="imagen">
-      <img src="/uploads/_DSC1167.jpg" alt="Foto 2" style="width: 300px;">
-    </div>
-    <!-- Aquí se añadirían más imágenes de manera dinámica si se suben más fotos -->
+  <h1>Bienvenido al Blog Motero</h1>
+  <h2>Fotos Subidas</h2>
+  <div>
+    <!-- Aquí se insertarán las fotos subidas -->
+    <!-- FOTOS -->
   </div>
 
-  <h2>Comentarios</h2>
-  <form action="/comentar" method="POST">
-    <input type="text" name="nombre" placeholder="Tu nombre" required>
-    <textarea name="comentario" placeholder="Tu comentario" required></textarea>
-    <button type="submit">Comentar</button>
+  <h3>Subir Foto</h3>
+  <form action="/subir-foto" method="POST" enctype="multipart/form-data">
+    <input type="file" name="foto" required>
+    <button type="submit">Subir Foto</button>
   </form>
 
-  <div id="comentarios">
-    <!-- Los comentarios se insertarán aquí -->
-    <h3>Comentarios:</h3>
-    <!-- COMENTARIOS -->
-  </div>
+  <a href="/fotos">Ver Todas las Fotos</a>
 </body>
 </html>
