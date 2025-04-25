@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog de Motero</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de Fotos</title>
 </head>
 <body>
-    <h1>Blog de Motero</h1>
+  <h1>Bienvenido a la Galería de Fotos</h1>
 
-    <h2>Sube tu Foto:</h2>
-    <form action="/subir-foto" method="POST" enctype="multipart/form-data">
-        <input type="file" name="foto" accept="image/*">
-        <button type="submit">Subir Foto</button>
-    </form>
+  <!-- Enlace al apartado de fotos -->
+  <nav>
+    <a href="/fotos"><button>Ver Fotos</button></a>
+  </nav>
 
-    <h2>Comentarios:</h2>
-    <form action="/comentar" method="POST">
-        <input type="text" name="nombre" placeholder="Tu nombre" required>
-        <textarea name="comentario" placeholder="Escribe un comentario" required></textarea>
-        <button type="submit">Comentar</button>
-    </form>
-
-    <div>
-        <h3>Fotos Subidas:</h3>
-        <!-- Aquí se mostrará la imagen que se suba, ejemplo con una imagen de prueba -->
-        <img src="/uploads/_DSC1166.jpg" alt="Imagen subida">
+  <h2>Galería de Fotos</h2>
+  <div class="galeria">
+    <!-- Mostrar las imágenes subidas automáticamente -->
+    <div class="imagen">
+      <img src="/uploads/_DSC1166.jpg" alt="Foto 1" style="width: 300px;">
     </div>
-
-    <div>
-        <h3>Comentarios:</h3>
-        <!-- COMENTARIOS -->
+    <div class="imagen">
+      <img src="/uploads/_DSC1167.jpg" alt="Foto 2" style="width: 300px;">
     </div>
+    <!-- Aquí se añadirían más imágenes de manera dinámica si se suben más fotos -->
+  </div>
+
+  <h2>Comentarios</h2>
+  <form action="/comentar" method="POST">
+    <input type="text" name="nombre" placeholder="Tu nombre" required>
+    <textarea name="comentario" placeholder="Tu comentario" required></textarea>
+    <button type="submit">Comentar</button>
+  </form>
+
+  <div id="comentarios">
+    <!-- Los comentarios se insertarán aquí -->
+    <h3>Comentarios:</h3>
+    <!-- COMENTARIOS -->
+  </div>
 </body>
 </html>
