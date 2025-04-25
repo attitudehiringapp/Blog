@@ -1,31 +1,17 @@
-<!-- public/fotos.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fotos</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Fotos Subidas</title>
 </head>
 <body>
-  <header>
-    <h1>Galería de Fotos</h1>
-    <nav>
-      <a href="/">Inicio</a>
-      <a href="/fotos">Fotos</a> <!-- Enlace a la página de fotos -->
-    </nav>
-  </header>
+  <h1>Fotos Subidas</h1>
+  <div>
+    <!-- Aquí se insertarán las fotos subidas -->
+    <!-- FOTOS -->
+  </div>
 
-  <section class="galeria">
-    <h2>Fotos Subidas</h2>
-    <div class="imagenes">
-      <!-- Aquí se mostrarán las imágenes dinámicamente -->
-      <!-- IMÁGENES -->
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 Blog Motero</p>
-  </footer>
+  <a href="/">Volver a la portada</a>
 </body>
 </html>
