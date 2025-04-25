@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog Motero</title>
+  <title>Página Principal</title>
 </head>
 <body>
-  <h1>Bienvenido al Blog Motero</h1>
-  <h2>Fotos Subidas</h2>
-  <div>
-    <!-- Aquí se insertarán las fotos subidas -->
-    <!-- FOTOS -->
+  <h1>Página Principal</h1>
+  <h2>Comentarios:</h2>
+  <!-- Aquí se inyectarán los comentarios -->
+  <div id="comentarios">
+    <!-- COMENTARIOS -->
   </div>
 
-  <h3>Subir Foto</h3>
+  <h2>Subir Foto</h2>
   <form action="/subir-foto" method="POST" enctype="multipart/form-data">
     <input type="file" name="foto" required>
     <button type="submit">Subir Foto</button>
   </form>
 
-  <a href="/fotos">Ver Todas las Fotos</a>
+  <br>
+  <a href="/fotos">Ver Todas las Fotos</a> <!-- Enlace al apartado de fotos -->
 </body>
 </html>
