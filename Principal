@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Motero</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #111;
+      color: #fff;
+    }
+
+    header, footer {
+      background-color: #222;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      color: #f50;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #333;
+      display: flex;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #f50;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .section-title {
+      font-size: 1.8em;
+      border-bottom: 2px solid #f50;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .gallery, .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    .gallery img, .videos iframe {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .upload-form, .comment-form {
+      margin-top: 20px;
+      background-color: #222;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .upload-form input, .comment-form textarea, .comment-form input {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .upload-form button, .comment-form button {
+      margin-top: 10px;
+      background-color: #f50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .post {
+      background-color: #222;
+      padding: 15px;
+      margin-top: 20px;
+      border-left: 5px solid #f50;
+      border-radius: 8px;
+    }
+
+    .comments {
+      margin-top: 10px;
+      background-color: #111;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .comments p {
+      margin: 5px 0;
+      border-bottom: 1px solid #333;
+      padding-bottom: 5px;
+    }
+
+    footer {
+      color: #aaa;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Blog Motero</h1>
+    <p>Pasión por las dos ruedas</p>
+  </header>
+
+  <nav>
+    <a href="#">Inicio</a>
+    <a href="#">Fotos</a>
+    <a href="#">Videos</a>
+    <a href="#">Entradas</a>
+    <a href="#">Contacto</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- GALERÍA -->
+    <section>
+      <h2 class="section-title">Galería de Fotos</h2>
+      <div class="gallery">
+        <img src="foto1.jpg" alt="Moto 1">
+        <img src="foto2.jpg" alt="Moto 2">
+        <img src="foto3.jpg" alt="Moto 3">
+      </div>
+
+      <!-- SUBIDA DE FOTOS -->
+      <div class="upload-form">
+        <h3>Sube tu foto</h3>
+        <form action="/subir-foto" method="POST" enctype="multipart/form-data">
+          <input type="file" name="foto" accept="image/*" required />
+          <button type="submit">Subir</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section>
+      <h2 class="section-title">Videos</h2>
+      <div class="videos">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID1" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID2" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- ENTRADAS -->
+    <section>
+      <h2 class="section-title">Últimas Entradas</h2>
+
+      <div class="post">
+        <h3>Ruta por la Sierra de Madrid</h3>
+        <p>Impresionante travesía por curvas y naturaleza. ¡Repetiremos!</p>
+
+        <div class="comment-form">
+          <h4>Deja un comentario</h4>
+          <form action="/comentar" method="POST">
+            <input type="text" name="nombre" placeholder="Tu nombre" required />
+            <textarea name="comentario" rows="3" placeholder="Escribe tu comentario..." required></textarea>
+            <button type="submit">Enviar</button>
+          </form>
+        </div>
+
+        <div class="comments">
+          <p><strong>Ana:</strong> ¡Qué ruta más chula! Gracias por compartir.</p>
+          <p><strong>Juan:</strong> ¿Recomiendas alguna parada para comer?</p>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 Blog Motero. Todos los derechos reservados.
+  </footer>
+
+</body>
+</html>
