@@ -1,140 +1,35 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog Motero</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #111;
-      color: #fff;
-    }
-
-    header {
-      background-color: #222;
-      padding: 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-      color: #f50;
-    }
-
-    nav {
-      background-color: #333;
-      display: flex;
-      justify-content: center;
-      padding: 10px 0;
-    }
-
-    nav a {
-      color: #fff;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      color: #f50;
-    }
-
-    .container {
-      padding: 20px;
-    }
-
-    .section-title {
-      font-size: 1.8em;
-      margin-bottom: 10px;
-      border-bottom: 2px solid #f50;
-      display: inline-block;
-    }
-
-    .gallery, .videos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 10px;
-    }
-
-    .gallery img, .videos iframe {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    .blog-posts {
-      margin-top: 30px;
-    }
-
-    .post {
-      background-color: #222;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-left: 5px solid #f50;
-    }
-
-    footer {
-      background-color: #222;
-      color: #999;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog de Motero</title>
 </head>
 <body>
+    <h1>Blog de Motero</h1>
 
-  <header>
-    <h1>Blog Motero</h1>
-    <p>Pasión por las dos ruedas</p>
-  </header>
+    <h2>Sube tu Foto:</h2>
+    <form action="/subir-foto" method="POST" enctype="multipart/form-data">
+        <input type="file" name="foto" accept="image/*">
+        <button type="submit">Subir Foto</button>
+    </form>
 
-  <nav>
-    <a href="#">Inicio</a>
-    <a href="#">Fotos</a>
-    <a href="#">Videos</a>
-    <a href="#">Entradas</a>
-    <a href="#">Contacto</a>
-  </nav>
+    <h2>Comentarios:</h2>
+    <form action="/comentar" method="POST">
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <textarea name="comentario" placeholder="Escribe un comentario" required></textarea>
+        <button type="submit">Comentar</button>
+    </form>
 
-  <div class="container">
-    <section>
-      <h2 class="section-title">Galería de Fotos</h2>
-      <div class="gallery">
-        <img src="foto1.jpg" alt="Moto en ruta" />
-        <img src="foto2.jpg" alt="Grupo motero" />
-        <img src="foto3.jpg" alt="Moto clásica" />
-      </div>
-    </section>
+    <div>
+        <h3>Fotos Subidas:</h3>
+        <!-- Aquí se mostrará la imagen que se suba, ejemplo con una imagen de prueba -->
+        <img src="/uploads/_DSC1166.jpg" alt="Imagen subida">
+    </div>
 
-    <section>
-      <h2 class="section-title">Videos</h2>
-      <div class="videos">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID1" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID2" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </section>
-
-    <section class="blog-posts">
-      <h2 class="section-title">Últimas Entradas</h2>
-      <div class="post">
-        <h3>Ruta por los Pirineos</h3>
-        <p>Una experiencia inolvidable recorriendo curvas y paisajes impresionantes.</p>
-      </div>
-      <div class="post">
-        <h3>Consejos para viajar seguro</h3>
-        <p>Desde el equipamiento hasta la planificación, todo lo que necesitas saber.</p>
-      </div>
-    </section>
-  </div>
-
-  <footer>
-    &copy; 2025 Blog Motero. Todos los derechos reservados.
-  </footer>
-
+    <div>
+        <h3>Comentarios:</h3>
+        <!-- COMENTARIOS -->
+    </div>
 </body>
 </html>
