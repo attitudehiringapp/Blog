@@ -2,139 +2,153 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blog Motero</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: Arial, sans-serif;
       background-color: #111;
       color: #fff;
+      margin: 0;
+      padding: 0;
     }
 
     header {
       background-color: #222;
-      padding: 20px;
+      padding: 1rem;
       text-align: center;
     }
 
     header h1 {
+      color: orange;
       margin: 0;
-      font-size: 2.5em;
-      color: #f50;
     }
 
     nav {
       background-color: #333;
-      display: flex;
-      justify-content: center;
-      padding: 10px 0;
+      padding: 1rem;
+      text-align: center;
     }
 
     nav a {
-      color: #fff;
-      margin: 0 15px;
+      color: white;
+      margin: 0 1rem;
       text-decoration: none;
       font-weight: bold;
     }
 
     nav a:hover {
-      color: #f50;
+      color: orange;
     }
 
-    .container {
-      padding: 20px;
+    section {
+      padding: 2rem;
     }
 
-    .section-title {
-      font-size: 1.8em;
-      margin-bottom: 10px;
-      border-bottom: 2px solid #f50;
-      display: inline-block;
+    h2 {
+      border-bottom: 2px solid orange;
+      padding-bottom: 0.5rem;
     }
 
-    .gallery, .videos {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 10px;
+    .galeria {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
-    .gallery img, .videos iframe {
+    .galeria img {
       width: 100%;
+      max-width: 300px;
       border-radius: 8px;
     }
 
-    .blog-posts {
-      margin-top: 30px;
+    .video-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
-    .post {
-      background-color: #222;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-left: 5px solid #f50;
+    .video-container iframe {
+      width: 100%;
+      max-width: 400px;
+      height: 225px;
     }
 
-    footer {
-      background-color: #222;
-      color: #999;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
+    form {
+      margin-top: 2rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: orange;
+      color: black;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background-color: darkorange;
     }
   </style>
 </head>
 <body>
-
   <header>
     <h1>Blog Motero</h1>
     <p>Pasión por las dos ruedas</p>
   </header>
 
   <nav>
-    <a href="#">Inicio</a>
-    <a href="#">Fotos</a>
-    <a href="#">Videos</a>
-    <a href="#">Entradas</a>
-    <a href="#">Contacto</a>
+    <a href="/">Inicio</a>
+    <a href="/fotos">Fotos</a>
+    <a href="/videos">Videos</a>
+    <a href="/entradas">Entradas</a>
+    <a href="/contacto">Contacto</a>
   </nav>
 
-  <div class="container">
-    <section>
-      <h2 class="section-title">Galería de Fotos</h2>
-      <div class="gallery">
-        <!-- Imagen añadida con la ruta correcta -->
-        <img src="/uploads/_DSC1166.jpg" alt="Moto en ruta" />
-        <img src="foto2.jpg" alt="Grupo motero" />
-        <img src="foto3.jpg" alt="Moto clásica" />
-      </div>
-    </section>
+  <section>
+    <h2>Galería de Fotos</h2>
+    <div class="galeria">
+      <img src="/uploads/_DSC1166.jpg" alt="Moto 1" />
+      <img src="/uploads/_DSC1167.jpg" alt="Moto 2" />
+    </div>
+  </section>
 
-    <section>
-      <h2 class="section-title">Videos</h2>
-      <div class="videos">
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID1" frameborder="0" allowfullscreen></iframe>
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID2" frameborder="0" allowfullscreen></iframe>
-      </div>
-    </section>
+  <section>
+    <h2>Videos</h2>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/Bey4XXJAqS8" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
 
-    <section class="blog-posts">
-      <h2 class="section-title">Últimas Entradas</h2>
-      <div class="post">
-        <h3>Ruta por los Pirineos</h3>
-        <p>Una experiencia inolvidable recorriendo curvas y paisajes impresionantes.</p>
-      </div>
-      <div class="post">
-        <h3>Consejos para viajar seguro</h3>
-        <p>Desde el equipamiento hasta la planificación, todo lo que necesitas saber.</p>
-      </div>
-    </section>
-  </div>
+  <section>
+    <h2>Sube tu foto</h2>
+    <form action="/subir-foto" method="POST" enctype="multipart/form-data">
+      <input type="file" name="foto" required />
+      <button type="submit">Subir</button>
+    </form>
+  </section>
 
-  <footer>
-    &copy; 2025 Blog Motero. Todos los derechos reservados.
-  </footer>
-
+  <section>
+    <h2>Comentarios</h2>
+    <form action="/comentar" method="POST">
+      <input type="text" name="nombre" placeholder="Tu nombre" required />
+      <textarea name="comentario" placeholder="Tu comentario" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <div id="comentarios">
+      <!-- COMENTARIOS -->
+    </div>
+  </section>
 </body>
 </html>
