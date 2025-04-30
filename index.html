@@ -1,25 +1,120 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página Principal</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog Motero</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    header {
+      background-color: #1f1f1f;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      color: #ff6600;
+      margin: 0;
+    }
+
+    nav {
+      background-color: #2e2e2e;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+    }
+
+    nav a:hover, nav a.active {
+      color: #ff6600;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+
+    .galeria img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    footer {
+      background-color: #1f1f1f;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Página Principal</h1>
-  <h2>Comentarios:</h2>
-  <!-- Aquí se inyectarán los comentarios -->
-  <div id="comentarios">
-    <!-- COMENTARIOS -->
+
+<header>
+  <h1>Blog Motero</h1>
+  <p>Pasión por las dos ruedas</p>
+</header>
+
+<nav>
+  <a href="/" class="active">Inicio</a>
+  <a href="/fotos">Fotos</a>
+  <a href="/videos">Videos</a>
+  <a href="/entradas">Entradas</a>
+  <a href="/contacto">Contacto</a>
+</nav>
+
+<div class="container">
+  <h2>Bienvenido al blog</h2>
+  <p>Aquí encontrarás contenido sobre motos, imágenes, vídeos y más.</p>
+
+  <h3>Galería de Fotos</h3>
+  <div class="galeria">
+    <img src="/uploads/_DSC1166.jpg" alt="Foto 1" />
+    <!-- Aquí se añadirán más fotos dinámicamente -->
   </div>
 
-  <h2>Subir Foto</h2>
-  <form action="/subir-foto" method="POST" enctype="multipart/form-data">
-    <input type="file" name="foto" required>
-    <button type="submit">Subir Foto</button>
+  <h3>Videos</h3>
+  <div class="galeria">
+    <iframe width="100%" height="200" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+    <!-- Reemplaza VIDEO_ID con el código de un vídeo real -->
+  </div>
+
+  <form action="/subir-foto" method="post" enctype="multipart/form-data">
+    <h3>Subir nueva foto</h3>
+    <input type="file" name="foto" required />
+    <button type="submit">Subir</button>
   </form>
 
-  <br>
-  <a href="/fotos">Ver Todas las Fotos</a> <!-- Enlace al apartado de fotos -->
+  <form action="/comentar" method="post">
+    <h3>Deja un comentario</h3>
+    <input type="text" name="nombre" placeholder="Tu nombre" required />
+    <textarea name="comentario" placeholder="Escribe tu comentario" required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+
+  <h3>Comentarios</h3>
+  <!-- COMENTARIOS -->
+</div>
+
+<footer>
+  <p>&copy; 2025 Blog Motero</p>
+</footer>
+
 </body>
 </html>
