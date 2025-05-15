@@ -7,6 +7,12 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Crear carpeta 'uploads' si no existe
+const uploadsPath = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsPath)) {
+  fs.mkdirSync(uploadsPath);
+}
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, 'uploads/'),
   filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
@@ -42,7 +48,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/fotos', (req, res) => {
-  const fotos = fs.readdirSync(path.join(__dirname, 'uploads'));
+  const fotos = fs.readdirSync(uploadsPath);
   const imagenesHtml = fotos.map(foto =>
     `<div class="imagen"><img src="/uploads/${foto}" alt="${foto}"></div>`
   ).join('\n');
