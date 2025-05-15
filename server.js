@@ -7,19 +7,16 @@ const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Configurar almacenamiento de Multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, 'uploads/'),
   filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
 });
 const upload = multer({ storage });
 
-// Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 
-// Rutas
 let comentarios = [];
 
 app.post('/subir-foto', upload.single('foto'), (req, res) => {
@@ -45,19 +42,41 @@ app.get('/', (req, res) => {
 });
 
 app.get('/fotos', (req, res) => {
-  fs.readdir('./uploads', (err, files) => {
-    if (err) {
-      return res.status(500).send('Error al leer las imágenes');
-    }
+  const fotos = fs.readdirSync(path.join(__dirname, 'uploads'));
+  const imagenesHtml = fotos.map(foto =>
+    `<div class="imagen"><img src="/uploads/${foto}" alt="${foto}"></div>`
+  ).join('\n');
 
-    const imagenesHtml = files.map(file => 
-      `<div class="imagen"><img src="/uploads/${file}" alt="${file}"></div>`
-    ).join('\n');
-
-    const html = fs.readFileSync('public/fotos.html', 'utf8');
-    const finalHtml = html.replace('<!-- GALERIA -->', imagenesHtml);
-    res.send(finalHtml);
-  });
+  const html = `
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <title>Galería de Fotos</title>
+      <link rel="stylesheet" href="/estilos.css">
+    </head>
+    <body>
+      <header>
+        <h1>Blog Motero</h1>
+        <nav>
+          <a href="/">Inicio</a>
+          <a href="/fotos" class="activo">Fotos</a>
+          <a href="#">Videos</a>
+          <a href="#">Entradas</a>
+          <a href="#">Contacto</a>
+        </nav>
+      </header>
+      <main>
+        <h2>Galería de Fotos</h2>
+        <div class="galeria">
+          ${imagenesHtml}
+        </div>
+      </main>
+    </body>
+    </html>
+  `;
+  res.send(html);
 });
 
 app.listen(PORT, () => {
