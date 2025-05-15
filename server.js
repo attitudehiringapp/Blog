@@ -5,18 +5,21 @@ const path = require('path');
 const fs = require('fs');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
+// Configurar almacenamiento de Multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => cb(null, 'uploads/'),
   filename: (req, file, cb) => cb(null, Date.now() + '-' + file.originalname)
 });
 const upload = multer({ storage });
 
+// Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
-app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
+app.use('/uploads', express.static('uploads'));
 
+// Rutas
 let comentarios = [];
 
 app.post('/subir-foto', upload.single('foto'), (req, res) => {
@@ -42,21 +45,19 @@ app.get('/', (req, res) => {
 });
 
 app.get('/fotos', (req, res) => {
-  const html = fs.readFileSync('public/fotos.html', 'utf8');
-  const imagesDir = path.join(__dirname, 'public/uploads');
+  fs.readdir('./uploads', (err, files) => {
+    if (err) {
+      return res.status(500).send('Error al leer las imágenes');
+    }
 
-  let imageTags = '';
-  if (fs.existsSync(imagesDir)) {
-    const images = fs.readdirSync(imagesDir).filter(file =>
-      ['.jpg', '.jpeg', '.png', '.gif'].includes(path.extname(file).toLowerCase())
-    );
-    imageTags = images.map(img =>
-      `<img src="/uploads/${img}" alt="${img}" style="max-width: 300px; margin: 10px;">`
+    const imagenesHtml = files.map(file => 
+      `<div class="imagen"><img src="/uploads/${file}" alt="${file}"></div>`
     ).join('\n');
-  }
 
-  const finalHtml = html.replace('<!-- GALERIA -->', imageTags);
-  res.send(finalHtml);
+    const html = fs.readFileSync('public/fotos.html', 'utf8');
+    const finalHtml = html.replace('<!-- GALERIA -->', imagenesHtml);
+    res.send(finalHtml);
+  });
 });
 
 app.listen(PORT, () => {
